@@ -8,6 +8,7 @@
 
 # Dataset
 
+- Download the dataset from here : https://www.kaggle.com/omkargurav/face-mask-dataset
 - Now let us take a look at the dataset, inside dataset there will be two folders named with_mask and without_mask. 
 - with_mask folder will have images of people wearing mask in their faces. There are 1916 images of people wearing mask.
 - Similarly, withou_mask folder have images of people not wearing mask.

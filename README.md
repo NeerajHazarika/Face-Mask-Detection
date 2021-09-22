@@ -1,5 +1,7 @@
-# Face Mask Detection using Keras and OpenCV
+<h1 align="center">Face Mask Detection using Keras and OpenCV</h1>
 
+<div align= "center"><img src="https://user-images.githubusercontent.com/72177954/134400125-1a1050db-35b3-470e-9691-1133ea32f278.png" width="1100" height="700"/></div>
+    
 # Install Dependcies
 
 - Inorder to install the dependencies, first you need to clone this repository to your local computer. 

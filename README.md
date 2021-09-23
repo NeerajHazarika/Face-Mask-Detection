@@ -4,21 +4,21 @@
 
 </div>
 
-# What is Face Mask Detection ?  
+# 😷 What is Face Mask Detection ?  
 Face mask detection is an AI based technology that analyzes a video stream to detect and recognize a face mask worn by an individual person or a crowd of people.
 
-# Frameworks and Libraries 
+# :warning: Frameworks and Libraries 
 - [OpenCV](https://opencv.org/about/) (Open Source Computer Vision Library) : It is an open source computer vision and machine learning software library. OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products. Being a BSD-licensed product, OpenCV makes it easy for businesses to utilize and modify the code. 
 - [Keras](https://keras.io/about/) : It is a deep learning API written in Python, running on top of the machine learning platform TensorFlow. It was developed with a focus on enabling fast experimentation. Being able to go from idea to result as fast as possible is key to doing good research. 
 - [MobileNet V2](https://keras.io/api/applications/mobilenet/) : It is a lightweight pre-trained model available in Keras Applications; used as a base model for our transfer learning
 - [OpenCV DNN Face Detector](https://caffe.berkeleyvision.org) : Caffe-based Single Shot-Multibox Detector (SSD) model used to detect faces
 
-# Purpose of face mask detection 
+# :star: Purpose of face mask detection 
 - Check Individuals And Crowds Wearing Masks In Public
 - Use Digital Screens To Remind Visitors To Wear Masks
 - Alert Staff When No Masks Are Detected
 
-# Usage and Application 
+# 😄 Usage and Application 
 - **Taxis** : Because cars usually have very limited space especially when travelling with multiple people, there is no option to keep the standard 1,5 m distance. Thus enforcing masks is important for minimizing the threat of spreading infection.
 - **Corporate Buildings** : With many office buildings opening up and employees coming back to work, face mask detection can be used to maintain a safe environment for everyone. The mask detection system can send alerts or reminders to those not complying.
 - **Public Transport** : Wearing face masks in public transport will be mandatory in many parts of the world. Public transport organizations can use the software to automate the checking process with very little resources needed and with efficiency.
@@ -26,7 +26,7 @@ Face mask detection is an AI based technology that analyzes a video stream to de
 - **Airports** : Our face mask detector can be very effectively used at airports mainly for entrance flow management and monitoring. The software can be added to any access gate or entrance to make sure that all passengers follow the safety rules when boarding a plane.
 - **Hospitality** : Hotels, restaurants and bars are opening their doors to the public with certain regulations. In many cases, visitors will be required to wear masks when checking in or interacting with the staff. Ensure a smooth and safe visitor experience. 
 
-# Advantage
+# :clap: Advantage
 - Face Mask Detection system can help in reducing spread of COVID
 - Face Mask Detection system automates Mask Detection, hence reducing labour cost to check manually
 
@@ -79,7 +79,7 @@ $ python3 detect_mask_image.py
 $ python3 detect_mask_video.py 
 ```
 
-# Data Preprocessing
+# :sparkles: Data Preprocessing
 
 - We are going to convert all our images from with_mask and without_mask into arrays so that with those arrays we can create our deep learning model.
 - We then will create two list, "data" and "labels" inside the list we will append all the image array in that list and inside the labels list we will append the corresponding label to the image if it is with_mask or without_mask.
@@ -117,7 +117,7 @@ labels = np.array(labels)
 (trainX, testX, trainY, testY) = train_test_split(data, labels, test_size=0.20, stratify=labels, random_state=42)
 ```
 
-# Training 
+# 🔥 Training 
 
 - We are going to follow CNN for training but we are making a small change in it. We are going to eliminate CNN layer and instead use [MobileNet](https://keras.io/api/applications/mobilenet/) because it’s also computationally efficient and thus making it easier to deploy the model to embedded systems (Raspberry Pi, Google Coral, etc.). 
 - We initialize the learning rate as 1e-4, number of EPOCHS to train for as 20 and Batch Size as 32. We can play around with these values to improve accuracy.` INIT_LR, EPOCHS, BS = 1e-4, 20, 32`
@@ -142,7 +142,7 @@ model = Model(inputs=baseModel.input, outputs=headModel)
 - We now fit the model, we use the image data generator's new datasets inside the model. (It is always advisable to use image data generator when we have less dataset.
 ` H = model.fit(aug.flow(trainX, trainY, batch_size=BS), steps_per_epoch=len(trainX) // BS, validation_data=(testX, testY), validation_steps=len(testX) // BS, epochs=EPOCHS)`
 
-# Create Face detector model
+# :jack_o_lantern: Create Face detector model
 
 - We are going to use the face detector model to run the mask detector model for predicting if a person is wearing mask or not through our face-cam. For this camera operation we will be using OpenCV.
 - We load [FaceNet](https://www.pluralsight.com/guides/face-recognition-walkthrough-facenet) ( face recognition system developed by Google ) with pretrained [caffeemodel deep neural network](https://recodeminds.com/blog/a-beginners-guide-to-caffe-for-deep-learning/) by using cv2.dnn.readNet.
@@ -158,23 +158,25 @@ faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 - then we loop over the detected face location and draw a rectangle, mention above the rectangle the prediction label whether "Mask" or "No Mask" and add red or green color to rectangle and label depending on prediction (mask=green,no mask=red).
 - we also add character "q" for ending the loop. Then we stop video stream and close the window. 
 
-## :key: Results
+## :key: Final outputs and results
 
-#### Our model gave 98% accuracy for Face Mask Detection after training via <code>tensorflow-gpu==2.5.0</code>
+- Our model gave 99% accuracy for Face Mask Detection after training 
 
 ![Untitled](https://user-images.githubusercontent.com/72177954/134510949-45fc590d-f653-4a71-8e84-49ad4f1d5dc0.png)
 
-#### Live demo of working model
-https://user-images.githubusercontent.com/72177954/134049736-782a48ac-e7a2-462d-be8d-fd8f8041af3b.mp4
+- We got the following accuracy/loss training curve plot
 
-#### We got the following accuracy/loss training curve plot
 ![plot](https://user-images.githubusercontent.com/72177954/134034483-ecb0875f-1efa-491d-9891-6b21610c335b.png)
 
-# Conclusion
+- Live demo 
+
+https://user-images.githubusercontent.com/72177954/134049736-782a48ac-e7a2-462d-be8d-fd8f8041af3b.mp4
+
+# 🌟 Conclusion
 
 Face Mask Detection is very useful technology to enforce covid protocols and reduce spread of covid 19. Business enterprises and Public Transportations should leverage this technology to reduce labor cost and ensure a safer environment for everyone. 
 
-# Credits
+# :innocent: Credits
 - https://opencv.org/about/ 
 - https://keras.io/about/ 
 - https://sightcorp.com/face-mask-detection/
